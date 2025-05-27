@@ -11,19 +11,23 @@ public class Main {
         Queue<Integer> queue = new LinkedList<>();
         int input = -999;
         while((input = Integer.parseInt(br.readLine())) != -1) {
-            if(queue.size() >= n) {
-                continue;
-            }
 
             if(input == 0) {
                 queue.poll();
             } else {
+                if(queue.size() >= n) {
+                    continue;
+                }
                 queue.add(input);
             }
         }
 
-        while(!queue.isEmpty()) {
-            bw.write(queue.poll()+" ");
+        if(queue.isEmpty()) {
+            bw.write("empty");
+        } else {
+            while(!queue.isEmpty()) {
+                bw.write(queue.poll()+" ");
+            }
         }
         bw.write("\n");
         bw.close();
