@@ -9,23 +9,15 @@ class Solution {
 		};
 
 		// 수포자별 정답 개수 세기
-		int idx1 = 0;
-		int idx2 = 0;
-		int idx3 = 0;
-		int[] counts = {0, 0, 0};
 
+		int[] counts = {0, 0, 0};
 		for (int i = 0; i < answers.length; i++) {
-			if (humans[0][(idx1++) % humans[0].length] == answers[i]) {
-				counts[0]++;
-			}
-			if (humans[1][(idx2++) % humans[1].length] == answers[i]) {
-				counts[1]++;
-			}
-			if (humans[2][(idx3++) % humans[2].length] == answers[i]) {
-				counts[2]++;
+			for(int j=0; j<humans.length; j++) {
+				if (humans[j][i % humans[j].length] == answers[i]) {
+					counts[j]++;
+				}
 			}
 		}
-
 
 		// 정답이 많은 수포자 찾기
 		int max = counts[0];
